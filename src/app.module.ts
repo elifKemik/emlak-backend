@@ -16,12 +16,13 @@ import { UserModule } from './user.module';
 
 @Module({
   imports: [
+    
     // 1. Veritabanı Bağlantısı (Aiven & Vercel Uygun)
     TypeOrmModule.forRoot({
       type: 'mysql',
       // Vercel'e DATABASE_URL eklediysen url kısmını kullan
       // Eğer tek tek eklediysen host, port, username, password olarak ayırabilirsin
-      url: process.env.DATABASE_URL, 
+      url: 'DATABASE_URL=mysql://avnadmin:AVNS_PHAepdHGamhuzo_DMZL@mysql-23a4b26c-eliffkemik-aa72.i.aivencloud.com:11788/defaultdb?ssl-mode=REQUIRED', 
       entities: [User, Listing, Location, Category],
       synchronize: true, // Geliştirme aşamasında tabloları otomatik oluşturur
       logging: true, // Hata ayıklama için logları açtık (Vercel loglarında görebilirsin)
