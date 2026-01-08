@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Listing } from './listing.entity'; // İlan entity'si ile ilişki kurmak için
+import { Listing } from './listing.entity'; 
 
 @Entity()
 export class Location {
@@ -12,7 +12,7 @@ export class Location {
   @Column()
   district: string;
 
-  // Bir lokasyonda birden fazla ilan olabilir (15P İlişki Puanı)
+  
   @OneToMany(() => Listing, (listing) => listing.location)
   listings: Listing[];
 }

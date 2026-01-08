@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, JoinTable } from 'typeorm';
 import { Listing } from './listing.entity';
 
-@Entity('kullanicilar') // Veritabanında tablo adı 'kullanicilar' olacak
+@Entity('kullanicilar') 
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'eposta', unique: true }) // Sütun adı 'eposta' olacak
+  @Column({ name: 'eposta', unique: true }) 
   email: string;
 
   @Column({ name: 'sifre' })
@@ -15,7 +15,7 @@ export class User {
   @Column({ name: 'rol' })
   role: string; 
 
-// user.entity.ts içinde olması gereken ilgili kısım:
+
 @OneToMany(() => Listing, (listing) => listing.user)
 listings: Listing[];
 

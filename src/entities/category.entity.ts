@@ -6,10 +6,10 @@ export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'kategori_adi', unique: true })
-  name: string; // Örn: Satılık, Kiralık
+ @Column() // { name: ... } kısmını kaldırıp direkt sütun ismini verelim
+  kategori_adi: string;
 
-  // Bire-Çok İlişki: Bir kategori altında birçok ilan listelenebilir.
+  
   @OneToMany(() => Listing, (listing) => listing.category)
   listings: Listing[];
 }

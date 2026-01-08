@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { LocationService } from './location.service';
 
-@Controller('konum') // Burası 'konum' mu?
+@Controller('konum') 
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
-  @Post('ekle') // Burası 'ekle' mi?
+  @Post('ekle')
   create(@Body() data: any) {
     return this.locationService.create(data);
   }

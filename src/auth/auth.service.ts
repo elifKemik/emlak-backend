@@ -16,11 +16,11 @@ export class AuthService {
       throw new UnauthorizedException('E-posta veya şifre hatalı!');
     }
 
-    // Payload içinde 'sub' olarak ID zaten var ama frontend'e açıkça 'id' yollamalıyız
+    
     const payload = { sub: user.id, email: user.email, role: user.role };
     
     return {
-      id: user.id, // KRİTİK EKSİK BURASIYDI: Frontend bu 'id'yi bekliyor
+      id: user.id, 
       role: user.role,
       email: user.email,
       access_token: await this.jwtService.signAsync(payload),

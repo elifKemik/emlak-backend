@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, ManyToMany, JoinColumn } from 'typeorm';
 import { User } from './user.entity';
 import { Location } from './location.entity';
 import { Category } from './category.entity';
@@ -17,17 +17,18 @@ export class Listing {
   @Column({ nullable: true })
   imageUrl: string;
 
-  // İlanın sahibi olan kullanıcı/emlakçı
+  
   @ManyToOne(() => User, (user) => user.listings)
   user: User;
 
-  @ManyToOne(() => Category, (category) => category.listings)
+  @ManyToOne(() => Category, (category) => category.listings, { eager: true })
+  @JoinColumn({ name: 'categoryId' }) // Veritabanı sütun bağlantısı eklendi
   category: Category;
 
   @ManyToOne(() => Location, (location) => location.listings)
   location: Location;
 
-  // Bu ilanı favorisine ekleyen kullanıcılar
+  
   @ManyToMany(() => User, (user) => user.favorites)
   favoritedBy: User[];
 }
